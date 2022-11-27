@@ -23,6 +23,7 @@ const createTask = (evento) => {
     <i class="fas fa-trash-alt trashIcon icon"></i>
     `; //creamos el div y le pasamos el value para que lo guarde dentro
   task.appendChild(taskContent); //agregamos al task el div con la info ingresada en el input
+  task.appendChild(deleteIco());
   list.appendChild(task); //agregamos a la lista el task
 };
 
@@ -40,5 +41,17 @@ const completeTask = (event) =>{
   element.classList.toggle("fas");
   element.classList.toggle("completeIcon");
   element.classList.toggle("far");
+}
+
+const deleteIco = () => {
+  const i = document.createElement("i"); 
+  i.classList.add("fas","fa-trash-alt", "trashIcon" ,"icon"); 
+  i.addEventListener("click", dumpTask);
+  return i;
+};
+
+const dumpTask = (event) =>{
+  const parent = event.target.parentElement;
+  parent.remove();
 }
 })();
