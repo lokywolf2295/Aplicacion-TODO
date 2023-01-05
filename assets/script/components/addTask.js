@@ -1,5 +1,6 @@
 import checkComplete from "./checkComplete.js";
 import deleteIco from "./deleteIco.js";
+import { displayTasks } from "./displayTasks.js";
 
 export const addTask = (event) => {
     event.preventDefault(); //evita que se recargue la pagina borrando la información
@@ -12,6 +13,10 @@ export const addTask = (event) => {
     const date = calendar.value; //guardamos la información de la fecha
     const dateFormat = moment(date).format("DD/MM/YYYY");
     
+    if(input == "" || date == ""){ //corroboramos que ambos inputs tengan información
+      return
+    }
+    
     input.value = ""; //vaciamos el input
     calendar.value = ""; //vaciamos el calendario
 
@@ -20,14 +25,15 @@ export const addTask = (event) => {
       dateFormat, //fecha
     };
 
+    list.innerHTML = ''; //por cada vez que se agreguen tareas nuevas se vacía la estructura
+
     //sessionStorage.setItem("tasks", JSON.stringify(taskObj)); 
     
     const taskList = JSON.parse(localStorage.getItem("tasks")) || []; //creamos un arreglo
     taskList.push(taskObj); //agregamos cada ingreso a el arreglo
     localStorage.setItem("tasks", JSON.stringify(taskList)); //pasamos la lista como parametro a almacenar
     
-    const task = createTask(taskObj); //llamo a la fincion de crear task
-    list.appendChild(task); //agregamos a la lista el task
+    displayTasks(); //llama a la función que agrupa las fechas
   };
 
   //Arrow function o funciones flechas / anonimas
