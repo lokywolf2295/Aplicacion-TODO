@@ -20,9 +20,13 @@ export const addTask = (event) => {
     input.value = ""; //vaciamos el input
     calendar.value = ""; //vaciamos el calendario
 
+    const complete = false; //se utilizará para verificar si el check está activado o no
+
     const taskObj = { //crea una variable que almacena una clave y su valor
       value, //texto
       dateFormat, //fecha
+      complete, //para el check
+      id: uuid.v4(),
     };
 
     list.innerHTML = ''; //por cada vez que se agreguen tareas nuevas se vacía la estructura
@@ -37,17 +41,25 @@ export const addTask = (event) => {
   };
 
   //Arrow function o funciones flechas / anonimas
-  export const createTask = ({value,dateFormat}) => {
+  export const createTask = ({value,dateFormat, complete, id}) => {
     const task = document.createElement("li"); //creo un elemento li
         task.classList.add("card"); //agregamos una clase al task
     
     //backticks
     const taskContent = document.createElement("div"); //creo un elemento div
     
+    const check = checkComplete(id);
+  
+    if(complete){
+      check.classList.toggle("fas");
+      check.classList.toggle("completeIcon");
+      check.classList.toggle("far");
+    }
+
     const titleTask = document.createElement("span"); //creo un elemento span
         titleTask.classList.add("task"); //agregamos la clase task al titleTask
         titleTask.innerText = value; //agregamos al titleTask el valor del inpút
-        taskContent.appendChild(checkComplete()); //agregamos al div check
+        taskContent.appendChild(check); //agregamos al div check
         taskContent.appendChild(titleTask); //agregamos al contenido el titleTask
 
     const dateElement = document.createElement("span"); //creo el elemento span para la fecha
