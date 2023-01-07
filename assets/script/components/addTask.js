@@ -66,6 +66,6 @@ export const addTask = (event) => {
         dateElement.innerHTML = dateFormat; //le agrego al span la fecha obtenida
         task.appendChild(taskContent); //agrego al task el div con la info ingresada en el input
         task.appendChild(dateElement); //agrego al task la fecha
-        task.appendChild(deleteIco()); //agrego al contenido el icono del basurero
+        task.appendChild(deleteIco(id)); //agrego al contenido el icono del basurero
     return task;
   };
