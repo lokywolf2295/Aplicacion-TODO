@@ -12,6 +12,7 @@ export const addTask = (event) => {
     const value = input.value; //guardamos la información del input
     const date = calendar.value; //guardamos la información de la fecha
     const dateFormat = moment(date).format("DD/MM/YYYY");
+    const time = moment(date).format('LT');
     
     if(input == "" || date == ""){ //corroboramos que ambos inputs tengan información
       return
@@ -25,6 +26,7 @@ export const addTask = (event) => {
     const taskObj = { //crea una variable que almacena una clave y su valor
       value, //texto
       dateFormat, //fecha
+      time, //hora
       complete, //para el check
       id: uuid.v4(),
     };
@@ -41,7 +43,7 @@ export const addTask = (event) => {
   };
 
   //Arrow function o funciones flechas / anonimas
-  export const createTask = ({value,dateFormat, complete, id}) => {
+  export const createTask = ({value, time, complete, id}) => {
     const task = document.createElement("li"); //creo un elemento li
         task.classList.add("card"); //agregamos una clase al task
     
@@ -63,7 +65,7 @@ export const addTask = (event) => {
         taskContent.appendChild(titleTask); //agregamos al contenido el titleTask
 
     const dateElement = document.createElement("span"); //creo el elemento span para la fecha
-        dateElement.innerHTML = dateFormat; //le agrego al span la fecha obtenida
+        dateElement.innerHTML = time; //le agrego al span la fecha obtenida
         task.appendChild(taskContent); //agrego al task el div con la info ingresada en el input
         task.appendChild(dateElement); //agrego al task la fecha
         task.appendChild(deleteIco(id)); //agrego al contenido el icono del basurero
