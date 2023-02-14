@@ -22,5 +22,25 @@ Vista de como queda luego de Borrar la taréa
 
 ![Eliminar Tarea](https://i.postimg.cc/zBWNYWzw/Manejo-DOM-2.png)
 
+#
+
+Vista de como quedan las tareas ordenadas por Fecha
+
+![Ordenamiento por Fechas](https://i.postimg.cc/qM7S5SPd/Agregando-reconocimientos-de-Check-Box-1.png)
+
+#
+
+Vista del almacenamiento de la información en el LocalStorage
+
+![Almacenamiento en LocalStorage](https://i.postimg.cc/sXrDPs0z/Agregando-reconocimientos-de-Check-Box.png)
+
+#
+
+Vista de como quedan las tareas ordenadas por Fecha y Hora
+
+![Ordenamiento por Hora](https://i.postimg.cc/W4PPCSm6/Trabajando-con-Ordenamiento-por-Horarios.png)
+
+
+
 ### En Github Pages
 https://lokywolf2295.github.io/Aplicacion-TODO/
